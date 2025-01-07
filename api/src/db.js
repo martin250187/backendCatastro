@@ -1,8 +1,3 @@
-// Cargar las variables de entorno solo en desarrollo (local)
-if (process.env.NODE_ENV !== 'production') {
-  require('dotenv').config();
-}
-
 const { Sequelize } = require('sequelize');
 
 // Obtener las variables de entorno
@@ -16,14 +11,14 @@ BDD:"gisdb"
 
 // Imprimir las variables de entorno para depuración
 console.log("Variables de entorno:");
-console.log("USER:", USER);
-console.log("PASSWORD:", PASSWORD);
-console.log("HOST:", HOST);
-console.log("PORT:", PORT);
-console.log("BDD:", BDD);
+console.log("USER:", auth.USER);
+console.log("PASSWORD:", auth.PASSWORD);
+console.log("HOST:", auth.HOST);
+console.log("PORT:", auth.PORT);
+console.log("BDD:", auth.BDD);
 
 // Verificar que todas las variables estén definidas
-if (!USER || !PASSWORD || !HOST || !PORT || !BDD) {
+if (!auth.USER || !auth.PASSWORD || !auth.HOST || !auth.PORT || !auth.BDD) {
   console.error('Faltan variables de entorno necesarias');
   process.exit(1);  // Detener la aplicación si faltan variables
 }
@@ -34,7 +29,7 @@ if (!USER || !PASSWORD || !HOST || !PORT || !BDD) {
   { logging: false }
 );*/
 const database = new Sequelize(
-  `postgres://${USER}:${PASSWORD}@${HOST}:${PORT}/${BDD}`,
+  `postgres://${auth.USER}:${auth.PASSWORD}@${auth.HOST}:${auth.PORT}/${auth.BDD}`,
   { logging: false }
 );
 
