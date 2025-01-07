@@ -6,7 +6,13 @@ if (process.env.NODE_ENV !== 'production') {
 const { Sequelize } = require('sequelize');
 
 // Obtener las variables de entorno
-const { USER, PASSWORD, HOST, PORT, BDD } = process.env;
+const auth = {
+USER:"postgres",
+PASSWORD:"20idepostgres20",
+HOST:"200.73.132.170",
+PORT:"5432",
+BDD:"gisdb"
+}
 
 // Imprimir las variables de entorno para depuración
 console.log("Variables de entorno:");
@@ -23,6 +29,10 @@ if (!USER || !PASSWORD || !HOST || !PORT || !BDD) {
 }
 
 // Crear la conexión a la base de datos usando Sequelize
+/*const database = new Sequelize(
+  `postgres://${USER}:${PASSWORD}@${HOST}:${PORT}/${BDD}`,
+  { logging: false }
+);*/
 const database = new Sequelize(
   `postgres://${USER}:${PASSWORD}@${HOST}:${PORT}/${BDD}`,
   { logging: false }
