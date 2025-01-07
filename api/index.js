@@ -1,7 +1,7 @@
 // /api/index.js
 const express = require("express");
 const cors = require("cors");
-const database = require('../db');  // Asegúrate de que la ruta sea correcta
+const database = require('..src/db.js');  // Asegúrate de que la ruta sea correcta
 
 const app = express();
 
