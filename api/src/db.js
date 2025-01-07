@@ -1,9 +1,13 @@
-require("dotenv").config();
-const { Sequelize } = require("sequelize");
+if (process.env.NODE_ENV !== 'production') {
+  require('dotenv').config();
+}
 
+const { Sequelize } = require('sequelize');
 const { USER, PASSWORD, HOST, PORT, BDD } = process.env;
 
-// Crear la conexión con la base de datos
+// Verifica que las variables estén correctamente cargadas
+console.log(USER, PASSWORD, HOST, PORT, BDD);  // Solo para depuración
+
 const database = new Sequelize(
   `postgres://${USER}:${PASSWORD}@${HOST}:${PORT}/${BDD}`,
   { logging: false }
